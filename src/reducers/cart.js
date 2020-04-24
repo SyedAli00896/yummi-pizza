@@ -37,9 +37,7 @@ export default (state = initialState, action) => {
 				items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
 				totalAmount: state.totalAmount + prodPrice,
 			};
-		case ADD_ORDER: {
-			return initialState;
-		}
+
 		case REMOVE_FROM_CART:
 			const selectedCartItem = state.items[action.pid];
 			const currentQty = selectedCartItem.quantity;
@@ -64,6 +62,9 @@ export default (state = initialState, action) => {
 				items: updatedCartItems,
 				totalAmount: state.totalAmount - selectedCartItem.productPrice,
 			};
+		// case ADD_ORDER: {
+		// 	return initialState;
+		// }
 		default:
 			return state;
 	}

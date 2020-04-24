@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Home from '../containers/Home';
 import Deals from '../containers/Deals';
 import Cart from '../containers/Cart';
+import Orders from '../containers/Orders';
 class App extends Component {
 	render() {
 		return (
@@ -16,8 +17,12 @@ class App extends Component {
 					<Route path='/deals' exact>
 						<Deals />
 					</Route>
+					<Route path='/orders' component={Orders} />
 					<Route path='/' component={Home} exact />
 				</Switch>
+				<footer class='my-5 pt-5 text-muted text-center text-small'>
+					<p class='mb-1'>&copy; 2020-2021 Yummi Pizza</p>
+				</footer>
 			</div>
 		);
 	}
