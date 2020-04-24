@@ -19,14 +19,11 @@ export default class Header extends Component {
 							<li>
 								<Link to='./deals'>Deals</Link>
 							</li>
-							<li>
-								<Link>Cart</Link>
-							</li>
 						</ul>
 						<ul class='nav navbar-nav navbar-right'>
 							<li>
-								<Link>
-									<span class='glyphicon glyphicon-user'></span> Sign Up
+								<Link to='./cart'>
+									<span class='glyphicon glyphicon-user'></span> Cart
 								</Link>
 							</li>
 							<li>

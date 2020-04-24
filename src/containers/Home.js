@@ -1,5 +1,5 @@
-import React, { useState, Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+
 import { recipes } from '../assets/data/recipes';
 import Pizzas from '../components/Pizzas';
 export default class Home extends Component {
