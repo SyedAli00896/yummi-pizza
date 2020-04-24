@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 
 import { deals } from '../assets/data/deals';
 import PizzaDeals from '../components/PizzaDeals';

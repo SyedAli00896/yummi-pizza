@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 const Pizzas = props => {
 	const { title, image, description, onAddToCart } = props;
 	const [dropdownOpen, setDropdownOpen] = useState(false);

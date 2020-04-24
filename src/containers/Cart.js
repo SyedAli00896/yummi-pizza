@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-export default class Cart extends Component {
+import { removeFromCart } from '../actions/cart';
+import CartItem from '../components/CartItem';
+class Cart extends Component {
 	render() {
+		const transformedCartItems = [];
+		for (const key in this.props.cart.items) {
+			transformedCartItems.push({
+				productId: key,
+				productTitle: this.props.cart.items[key].productTitle,
+				prodImage: this.props.cart.items[key].prodImage,
+				productPrice: this.props.cart.items[key].productPrice,
+				quantity: this.props.cart.items[key].quantity,
+				sum: this.props.cart.items[key].sum,
+			});
+		}
+		let subtotal = 0;
+		transformedCartItems.map(item => (subtotal += item.sum));
 		return (
 			<div class='container'>
 				<div class='row'>
@@ -18,43 +33,18 @@ export default class Cart extends Component {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class='col-md-6'>
-										<div class='media'>
-											<a class='thumbnail pull-left' href='#'>
-												<img
-													class='media-object'
-													src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png'
-													style={{ width: 72, height: 72 }}
-												/>
-											</a>
-											<div class='media-body'>
-												<h4 class='media-heading'>
-													<a href='#'>Product name</a>
-												</h4>
-											</div>
-										</div>
-									</td>
-									<td class='col-md-1' style={{ textAlign: 'center' }}>
-										<input
-											type='email'
-											class='form-control'
-											id='exampleInputEmail1'
-											value='2'
-										/>
-									</td>
-									<td class='col-md-1 text-center'>
-										<strong>$4.99</strong>
-									</td>
-									<td class='col-md-1 text-center'>
-										<strong>$9.98</strong>
-									</td>
-									<td class='col-md-1'>
-										<button type='button' class='btn btn-danger'>
-											<span class='glyphicon glyphicon-remove'></span> Remove
-										</button>
-									</td>
-								</tr>
+								{transformedCartItems.map(item => (
+									<CartItem
+										quantity={item.quantity}
+										productTitle={item.productTitle}
+										amount={item.sum}
+										onRemove={() => {
+											this.props.removeFromCart(item.productId);
+										}}
+										image={item.prodImage}
+										productPrice={item.productPrice}
+									/>
+								))}
 								<tr>
 									<td>   </td>
 									<td>   </td>
@@ -64,7 +54,7 @@ export default class Cart extends Component {
 									</td>
 									<td class='text-right'>
 										<h5>
-											<strong>$24.59</strong>
+											<strong>${subtotal}</strong>
 										</h5>
 									</td>
 								</tr>
@@ -73,11 +63,11 @@ export default class Cart extends Component {
 									<td>   </td>
 									<td>   </td>
 									<td>
-										<h5>Estimated shipping</h5>
+										<h5>Delivery Charges</h5>
 									</td>
 									<td class='text-right'>
 										<h5>
-											<strong>$6.94</strong>
+											<strong>$6</strong>
 										</h5>
 									</td>
 								</tr>
@@ -120,3 +110,10 @@ export default class Cart extends Component {
 		);
 	}
 }
+const mapStateToProps = state => {
+	return {
+		cart: state.cart,
+	};
+};
+
+export default connect(mapStateToProps, { removeFromCart })(Cart);

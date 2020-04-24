@@ -7,13 +7,12 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-	console.log('hello', action);
 	switch (action.type) {
 		case ADD_TO_CART:
 			const addedProduct = action.product;
 			const prodPrice = addedProduct.price;
 			const prodTitle = addedProduct.title;
-
+			const prodImage = addedProduct.image;
 			let updatedOrNewCartItem = {};
 			if (state.items[addedProduct.id]) {
 				// already have the item in the cart
@@ -21,6 +20,7 @@ export default (state = initialState, action) => {
 					quantity: state.items[addedProduct.id].quantity + 1,
 					productPrice: prodPrice,
 					productTitle: prodTitle,
+					prodImage,
 					sum: state.items[addedProduct.id].sum + prodPrice,
 				};
 			} else {
@@ -29,6 +29,7 @@ export default (state = initialState, action) => {
 					productPrice: prodPrice,
 					productTitle: prodTitle,
 					sum: prodPrice,
+					prodImage,
 				};
 			}
 			return {
@@ -49,6 +50,7 @@ export default (state = initialState, action) => {
 					quantity: selectedCartItem.quantity - 1,
 					productPrice: selectedCartItem.productPrice,
 					productTitle: selectedCartItem.productTitle,
+					prodImage: selectedCartItem.prodImage,
 					sum: selectedCartItem.sum - selectedCartItem.productPrice,
 				};
 
@@ -62,7 +64,7 @@ export default (state = initialState, action) => {
 				items: updatedCartItems,
 				totalAmount: state.totalAmount - selectedCartItem.productPrice,
 			};
+		default:
+			return state;
 	}
-
-	return state;
 };
