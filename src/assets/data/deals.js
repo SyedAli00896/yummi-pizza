@@ -1,54 +1,46 @@
 export const deals = [
 	{
-		name: 'Chicken Tikka',
+		id: 1,
+		ownerId: null,
+		price: 30,
+		title: 'Chicken Tikka',
 		description:
 			'A specially developed recipe for Pakistan topped with spicy chicken tikka & onions.',
-		image: require('../chicken-tikka.jpg'),
+		image: require('../../assets/Images/Deals/1587628287-buy1Bc copy.png'),
 	},
 	{
-		name: 'Chicken Fajita',
+		id: 2,
+		ownerId: null,
+		price: 30,
+		title: 'Chicken Fajita',
 		description:
 			'Special marinated chicken, onions, green peppers with special herbs and spices.',
-		image: require('../Chicken-Fajita.jpg'),
+		image: require('../../assets/Images/Deals/Combo-min.png'),
 	},
 	{
-		name: 'Cheese Lover',
+		id: 3,
+		ownerId: null,
+		price: 30,
+		title: 'Cheese Lover',
 		description: 'Go back to where it all began with classic mozzarella cheese & tomato base.',
-		image: require('../Cheese-Lover.jpg'),
+		image: require('../../assets/Images/Deals/Delivery-Deals.jpg'),
 	},
 	{
-		name: 'Very Veggie',
+		id: 4,
+		ownerId: null,
+		price: 30,
+		title: 'Very Veggie',
 		description:
 			'A colorful medley of tomatoes, onions, mushrooms, black olives, and green peppers.',
-		image: require('../Very-Veggie.jpg'),
+		image: require('../../assets/Images/Deals/wow_triple_large-min.png'),
 	},
 	{
-		name: 'Chicken Tikka Supreme',
+		id: 5,
+		ownerId: null,
+		price: 30,
+		title: 'Chicken Tikka Supreme',
 		description:
 			'Our world-famous flavor made even better with diced tomatoes and creamy ranch sauce.',
-		image: require('../Chicken-Tikka-Supreme.jpg'),
-	},
-	{
-		name: 'Chicken Fajita Supreme',
-		description: 'Scrumptious pieces of fajita chicken, fresh vegetables and lots of cheese.',
-		image: require('../Chicken-Fajita-Surpeme.jpg'),
-	},
-	{
-		name: 'Chilli Chicken',
-		description:
-			'Fire up your taste buds with spicy chicken chunks, onions, olives, jalapenos and hot peri sauce.',
-		image: require('../Chilli-Chicken.jpg'),
-	},
-	{
-		name: 'Creamy Melt',
-		description:
-			'Creamy goodness with spicy chicken chunks, onions and bell pepper for your taste buds.',
-		image: require('../Creamy-Melt.jpg'),
-	},
-	{
-		name: 'BBQ Buzz',
-		description:
-			'Smoked chicken, capsicum, onions and black olives, sweet and smoky BBQ sauce',
-		image: require('../BBQ-Buzz.jpg'),
+		image: require('../../assets/Images/Deals/wow_triple_small-min.png'),
 	},
 ];

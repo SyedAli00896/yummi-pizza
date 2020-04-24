@@ -11,7 +11,7 @@ export default class Home extends Component {
 						<PizzaDeals
 							className='row'
 							key={recipe.name}
-							title={recipe.name}
+							title={recipe.title}
 							description={recipe.description}
 							image={recipe.image}
 						/>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { recipes } from '../assets/data/recipes';
-import Pizzas from '../components/Pizzas';
 import { Link } from 'react-router-dom';
 export default class Cart extends Component {
 	render() {

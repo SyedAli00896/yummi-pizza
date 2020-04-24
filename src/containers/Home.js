@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
-import { recipes } from '../assets/data/recipes';
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/cart';
 import Pizzas from '../components/Pizzas';
-export default class Home extends Component {
+class Home extends Component {
 	render() {
+		const { availableProducts } = this.props.products;
 		return (
 			<div class='container-fluid'>
 				<div
@@ -30,13 +31,14 @@ export default class Home extends Component {
 					<h1 style={{ textAlign: 'center' }}>Our Most Popular Items</h1>
 				</div>
 				<div class='container'>
-					{recipes.map(recipe => (
+					{availableProducts.map(item => (
 						<Pizzas
 							className='row'
-							key={recipe.name}
-							title={recipe.name}
-							description={recipe.description}
-							image={recipe.image}
+							key={item.title}
+							title={item.title}
+							description={item.description}
+							image={item.image}
+							onAddToCart={() => this.props.addToCart(item)}
 						/>
 					))}
 				</div>
@@ -44,3 +46,12 @@ export default class Home extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	console.log('Home', state);
+	return {
+		products: state.products,
+	};
+};
+
+export default connect(mapStateToProps, { addToCart })(Home);

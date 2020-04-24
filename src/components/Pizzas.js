@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 const Pizzas = props => {
-	const { title, image, description } = props;
+	const { title, image, description, onAddToCart } = props;
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 
 	const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -38,6 +38,9 @@ const Pizzas = props => {
 								</DropdownMenu>
 							</Dropdown>
 						</div>
+						<button type='button' class='btn btn-danger btn-sm' onClick={onAddToCart}>
+							Add To Cart
+						</button>
 					</div>
 				</div>
 			</div>

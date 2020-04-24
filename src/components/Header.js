@@ -1,5 +1,5 @@
-import React, { useState, Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
 	render() {
@@ -8,12 +8,14 @@ export default class Header extends Component {
 				<nav class='navbar navbar-inverse'>
 					<div class='container-fluid'>
 						<div class='navbar-header'>
-							<a class='navbar-brand' href='#'>
-								Yummi Pizza
-							</a>
+							<li>
+								<Link class='navbar-brand' to='./'>
+									Yummi Pizza
+								</Link>
+							</li>
 						</div>
 						<ul class='nav navbar-nav'>
-							<li class='active'>
+							<li>
 								<Link to='./'>Home</Link>
 							</li>
 							<li>
@@ -23,7 +25,7 @@ export default class Header extends Component {
 						<ul class='nav navbar-nav navbar-right'>
 							<li>
 								<Link to='./cart'>
-									<span class='glyphicon glyphicon-user'></span> Cart
+									<span class='glyphicon glyphicon-shopping-cart'></span> Cart
 								</Link>
 							</li>
 							<li>
