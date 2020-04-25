@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-const Pizzas = props => {
-	const { title, image, description, onAddToCart } = props;
-	const [dropdownOpen, setDropdownOpen] = useState(false);
+import React from 'react';
 
-	const toggle = () => setDropdownOpen(prevState => !prevState);
+const Pizzas = props => {
+	const { title, image, description, onAddToCart, price } = props;
 
 	return (
 		<div>
@@ -14,30 +11,7 @@ const Pizzas = props => {
 					<div className='caption'>
 						<h3>{title}</h3>
 						<p>{description}</p>
-						<div>
-							<Dropdown isOpen={dropdownOpen} toggle={toggle}>
-								<DropdownToggle caret>Select Size & Type</DropdownToggle>
-								<DropdownMenu>
-									<div>
-										<DropdownItem onClick={value => value.target.innerText}>
-											Small Pan
-										</DropdownItem>
-									</div>
-									<div>
-										<DropdownItem>Regular Pan</DropdownItem>
-									</div>
-									<div>
-										<DropdownItem>Large Pan</DropdownItem>
-									</div>
-									<div>
-										<DropdownItem>Xtra Large Pan</DropdownItem>
-									</div>
-									<div>
-										<DropdownItem>Jumbo Pan</DropdownItem>
-									</div>
-								</DropdownMenu>
-							</Dropdown>
-						</div>
+						<h4>Price: ${price}</h4>
 						<button type='button' class='btn btn-danger btn-sm' onClick={onAddToCart}>
 							Add To Cart
 						</button>

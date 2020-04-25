@@ -12,7 +12,7 @@ const CartItem = props => {
 					</a>
 					<div class='media-body'>
 						<h4 class='media-heading'>
-							<a href='#'>{productTitle}</a>
+							<strong>{productTitle}</strong>
 						</h4>
 					</div>
 				</div>

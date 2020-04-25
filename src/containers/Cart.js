@@ -102,11 +102,7 @@ class Cart extends Component {
 										</td>
 										<td>
 											<Link to='./orders'>
-												<button
-													type='button'
-													class='btn btn-success'
-													onClick={() => this.props.addOrder(transformedCartItems, total)}
-												>
+												<button type='button' class='btn btn-success'>
 													Checkout <span class='glyphicon glyphicon-play'></span>
 												</button>
 											</Link>

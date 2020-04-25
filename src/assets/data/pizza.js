@@ -2,7 +2,7 @@ export const pizzaList = [
 	{
 		id: 1,
 		ownerId: null,
-		price: 30,
+		price: 8,
 		title: 'Chicken Tikka',
 		description:
 			'A specially developed recipe for Pakistan topped with spicy chicken tikka & onions.',
@@ -11,7 +11,7 @@ export const pizzaList = [
 	{
 		id: 2,
 		ownerId: null,
-		price: 30,
+		price: 8,
 		title: 'Chicken Fajita',
 		description:
 			'Special marinated chicken, onions, green peppers with special herbs and spices.',
@@ -20,7 +20,7 @@ export const pizzaList = [
 	{
 		id: 3,
 		ownerId: null,
-		price: 30,
+		price: 9,
 		title: 'Cheese Lover',
 		description: 'Go back to where it all began with classic mozzarella cheese & tomato base.',
 		image: require('../../assets/Images/PizzaImages/Cheese-Lover.jpg'),
@@ -28,7 +28,7 @@ export const pizzaList = [
 	{
 		id: 4,
 		ownerId: null,
-		price: 30,
+		price: 7,
 		title: 'Very Veggie',
 		description:
 			'A colorful medley of tomatoes, onions, mushrooms, black olives, and green peppers.',
@@ -37,7 +37,7 @@ export const pizzaList = [
 	{
 		id: 5,
 		ownerId: null,
-		price: 30,
+		price: 8,
 		title: 'Chicken Tikka Supreme',
 		description:
 			'Our world-famous flavor made even better with diced tomatoes and creamy ranch sauce.',
@@ -46,7 +46,7 @@ export const pizzaList = [
 	{
 		id: 6,
 		ownerId: null,
-		price: 30,
+		price: 9,
 		title: 'Chicken Fajita Supreme',
 		description: 'Scrumptious pieces of fajita chicken, fresh vegetables and lots of cheese.',
 		image: require('../../assets/Images/PizzaImages/Chicken-Fajita-Surpeme.jpg'),
@@ -54,7 +54,7 @@ export const pizzaList = [
 	{
 		id: 7,
 		ownerId: null,
-		price: 30,
+		price: 7,
 		title: 'Chilli Chicken',
 		description:
 			'Fire up your taste buds with spicy chicken chunks, onions, olives, jalapenos and hot peri sauce.',
@@ -63,7 +63,7 @@ export const pizzaList = [
 	{
 		id: 8,
 		ownerId: null,
-		price: 30,
+		price: 9,
 		title: 'Creamy Melt',
 		description:
 			'Creamy goodness with spicy chicken chunks, onions and bell pepper for your taste buds.',
@@ -72,7 +72,7 @@ export const pizzaList = [
 	{
 		id: 9,
 		ownerId: null,
-		price: 30,
+		price: 8,
 		title: 'BBQ Buzz',
 		description:
 			'Smoked chicken, capsicum, onions and black olives, sweet and smoky BBQ sauce',

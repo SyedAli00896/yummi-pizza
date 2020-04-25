@@ -5,6 +5,7 @@ import Pizzas from '../components/Pizzas';
 class Home extends Component {
 	render() {
 		const { availableProducts } = this.props.products;
+		console.log(availableProducts);
 		return (
 			<div class='container-fluid'>
 				<div
@@ -38,6 +39,7 @@ class Home extends Component {
 							title={item.title}
 							description={item.description}
 							image={item.image}
+							price={item.price}
 							onAddToCart={() => this.props.addToCart(item)}
 						/>
 					))}

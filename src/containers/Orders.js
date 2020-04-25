@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../actions/cart';
+import { addOrder, fetchOrder } from '../actions/orders';
 import { Link } from 'react-router-dom';
 class Orders extends Component {
+	state = { loading: false };
+	componentDidMount = async () => {
+		await this.props.fetchOrder();
+	};
 	render() {
+		const {
+			cart: { items },
+			orders,
+			addOrder,
+			history,
+		} = this.props;
 		const transformedCartItems = [];
-		for (const key in this.props.cart.items) {
+		for (const key in items) {
 			transformedCartItems.push({
 				productId: key,
-				productTitle: this.props.cart.items[key].productTitle,
-				prodImage: this.props.cart.items[key].prodImage,
-				productPrice: this.props.cart.items[key].productPrice,
-				quantity: this.props.cart.items[key].quantity,
-				sum: this.props.cart.items[key].sum,
+				productTitle: items[key].productTitle,
+				prodImage: items[key].prodImage,
+				productPrice: items[key].productPrice,
+				quantity: items[key].quantity,
+				sum: items[key].sum,
+			});
+		}
+		let subtotal = 0,
+			deliveryCharges = 10;
+		transformedCartItems.map(item => (subtotal += item.sum));
+		let total = subtotal + deliveryCharges;
+
+		const Orders = [];
+		for (const key in orders) {
+			Orders.push({
+				...orders[key],
 			});
 		}
 		return (
@@ -31,12 +52,12 @@ class Orders extends Component {
 				<div class='row'>
 					<div class='col-md-4 order-md-2 mb-4'>
 						<h4 class='d-flex justify-content-between align-items-center mb-3'>
-							<span class='text-muted'>Your cart</span>
+							<span>Current Cart Items</span>
 						</h4>
 						<ul class='list-group mb-3'>
 							<li class='list-group-item d-flex justify-content-between lh-condensed'>
 								{transformedCartItems.map(item => (
-									<div>
+									<div class='list-group-item '>
 										<div>
 											<h6 class='my-0'>{item.productTitle}</h6>
 											<small class='text-muted'>Quantity: {item.quantity}</small>
@@ -45,12 +66,48 @@ class Orders extends Component {
 									</div>
 								))}
 							</li>
-
-							<li class='list-group-item d-flex justify-content-between'>
-								<span>Total (USD)</span>
-								<strong>$20</strong>
-							</li>
+							{transformedCartItems.length && (
+								<li class='list-group-item d-flex justify-content-between'>
+									<span>Total (USD)</span>
+									<strong> ${total}</strong>
+								</li>
+							)}
 						</ul>
+						<div>
+							<h4 class='d-flex justify-content-between align-items-center mb-3'>
+								<span>Previous Orders</span>
+							</h4>
+							<ul class='list-group mb-3'>
+								<li class='list-group-item d-flex justify-content-between lh-condensed'>
+									{orders.map(itemData => (
+										<div class='list-group-item '>
+											{itemData.items.map(item => (
+												<div>
+													<h6>
+														<strong>Pizza : </strong>
+														{item.productTitle}
+													</h6>
+													<h6>
+														<strong>Quantity: </strong>
+														{item.quantity}
+													</h6>
+												</div>
+											))}
+
+											<div>
+												<span class='my-0'>
+													<strong>Amount: </strong>${itemData.totalAmount}
+												</span>
+											</div>
+											<span class='my-0'>
+												<strong>Date: </strong>
+												{itemData.date.toString().substring(0, 21)}
+											</span>
+										</div>
+									))}
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class='col-md-8 order-md-1'>
 						<h4 class='mb-3'>Billing</h4>
@@ -88,9 +145,6 @@ class Orders extends Component {
 									id='email'
 									placeholder='you@example.com'
 								/>
-								<div class='invalid-feedback'>
-									Please enter a valid email address for shipping updates.
-								</div>
 							</div>
 
 							<div class='mb-3'>
@@ -101,6 +155,10 @@ class Orders extends Component {
 									id='address'
 									placeholder='1234 Main St'
 								/>
+							</div>
+							<div class='mb-3'>
+								<label for='phone'>Contact Number</label>
+								<input class='form-control' placeholder='1234567890' />
 							</div>
 
 							<hr class='mb-4' />
@@ -170,15 +228,27 @@ class Orders extends Component {
 								</div>
 							</div>
 							<hr class='mb-4' />
-							<Link to='./'>
+
+							{this.state.loading ? (
+								<div class='d-flex justify-content-center'>
+									<div class='spinner-border' role='status'>
+										<span class='sr-only'>Loading...</span>
+									</div>
+								</div>
+							) : (
 								<button
 									class='btn btn-primary btn-lg btn-block'
-									// type='submit'
-									onClick={() => alert('Your order has been placed!!')}
+									onClick={async () => (
+										this.setState({ loading: true }),
+										await addOrder(transformedCartItems, total),
+										this.setState({ loading: false }),
+										alert('Your order has been placed!!'),
+										history.push('./')
+									)}
 								>
-									Continue to checkout
+									Place Order
 								</button>
-							</Link>
+							)}
 						</form>
 					</div>
 				</div>
@@ -188,9 +258,11 @@ class Orders extends Component {
 }
 
 const mapStateToProps = state => {
+	console.log(state);
 	return {
 		cart: state.cart,
+		orders: state.orders.orders,
 	};
 };
 
-export default connect(mapStateToProps, { addToCart })(Orders);
+export default connect(mapStateToProps, { addOrder, fetchOrder })(Orders);
