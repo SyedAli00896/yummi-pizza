@@ -29,7 +29,7 @@ export default class Header extends Component {
 								</Link>
 							</li>
 							<li>
-								<Link>
+								<Link to='./login'>
 									<span class='glyphicon glyphicon-log-in'></span> Login
 								</Link>
 							</li>

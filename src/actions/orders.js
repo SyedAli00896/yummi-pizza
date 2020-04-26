@@ -6,18 +6,20 @@ export const FETCH_ORDER = 'FETCH_ORDER';
 export const fetchOrder = () => {
 	return async dispatch => {
 		const resData = await RestClient.get('/orders/u1.json');
-		const loadedOrders = [];
-
-		for (const key in resData.data) {
-			loadedOrders.push({
-				id: key,
-				items: resData.data[key].items,
-				totalAmount: resData.data[key].amount,
-				date: new Date(resData.data[key].date),
-			});
+		if (!resData.ok) {
+			dispatch({ type: FETCH_ORDER, orderData: [] });
+		} else {
+			const loadedOrders = [];
+			for (const key in resData.data) {
+				loadedOrders.push({
+					id: key,
+					items: resData.data[key].items,
+					totalAmount: resData.data[key].amount,
+					date: new Date(resData.data[key].date),
+				});
+			}
+			dispatch({ type: FETCH_ORDER, orderData: loadedOrders });
 		}
-
-		dispatch({ type: FETCH_ORDER, orderData: loadedOrders });
 	};
 };
 
