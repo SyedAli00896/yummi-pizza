@@ -1,6 +1,6 @@
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
-
+export const LOGOUT = 'LOGOUT';
 export const signup = (email, password) => {
 	return async dispatch => {
 		const response = await fetch(
@@ -24,12 +24,15 @@ export const signup = (email, password) => {
 		} else {
 			const resData = await response.json();
 			console.log(resData);
-			dispatch({ type: SIGNUP });
+			dispatch({
+				type: SIGNUP,
+				payload: { token: resData.idToken, userId: resData.localId, email: resData.email },
+			});
 		}
 	};
 };
 
-export const login = (email, password) => {
+export const login = (email, password, history) => {
 	return async dispatch => {
 		const response = await fetch(
 			'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAt64ODSOYkU3476CuQkDBTudUdlCn9A2A',
@@ -52,7 +55,19 @@ export const login = (email, password) => {
 		} else {
 			const resData = await response.json();
 			console.log(resData);
-			dispatch({ type: LOGIN });
+			history.push('./');
+			dispatch({
+				type: LOGIN,
+				payload: { token: resData.idToken, userId: resData.localId, email: resData.email },
+			});
 		}
+	};
+};
+
+export const logout = () => {
+	return async dispatch => {
+		dispatch({
+			type: LOGOUT,
+		});
 	};
 };

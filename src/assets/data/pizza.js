@@ -1,7 +1,6 @@
 export const pizzaList = [
 	{
 		id: 1,
-		ownerId: null,
 		price: 8,
 		title: 'Chicken Tikka',
 		description:
@@ -10,7 +9,6 @@ export const pizzaList = [
 	},
 	{
 		id: 2,
-		ownerId: null,
 		price: 8,
 		title: 'Chicken Fajita',
 		description:
@@ -19,7 +17,6 @@ export const pizzaList = [
 	},
 	{
 		id: 3,
-		ownerId: null,
 		price: 9,
 		title: 'Cheese Lover',
 		description: 'Go back to where it all began with classic mozzarella cheese & tomato base.',
@@ -27,7 +24,6 @@ export const pizzaList = [
 	},
 	{
 		id: 4,
-		ownerId: null,
 		price: 7,
 		title: 'Very Veggie',
 		description:
@@ -36,7 +32,6 @@ export const pizzaList = [
 	},
 	{
 		id: 5,
-		ownerId: null,
 		price: 8,
 		title: 'Chicken Tikka Supreme',
 		description:
@@ -45,7 +40,6 @@ export const pizzaList = [
 	},
 	{
 		id: 6,
-		ownerId: null,
 		price: 9,
 		title: 'Chicken Fajita Supreme',
 		description: 'Scrumptious pieces of fajita chicken, fresh vegetables and lots of cheese.',
@@ -53,7 +47,6 @@ export const pizzaList = [
 	},
 	{
 		id: 7,
-		ownerId: null,
 		price: 7,
 		title: 'Chilli Chicken',
 		description:
@@ -62,7 +55,6 @@ export const pizzaList = [
 	},
 	{
 		id: 8,
-		ownerId: null,
 		price: 9,
 		title: 'Creamy Melt',
 		description:
@@ -71,7 +63,6 @@ export const pizzaList = [
 	},
 	{
 		id: 9,
-		ownerId: null,
 		price: 8,
 		title: 'BBQ Buzz',
 		description:

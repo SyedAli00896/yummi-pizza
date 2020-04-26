@@ -4,8 +4,11 @@ export const ADD_ORDER = 'ADD_ORDER';
 export const FETCH_ORDER = 'FETCH_ORDER';
 
 export const fetchOrder = () => {
-	return async dispatch => {
-		const resData = await RestClient.get('/orders/u1.json');
+	return async (dispatch, state) => {
+		const token = state().auth.token;
+		const userId = state().auth.userId;
+		const resData = await RestClient.get(`/orders/${userId}.json?auth=${token}`);
+
 		if (!resData.ok) {
 			dispatch({ type: FETCH_ORDER, orderData: [] });
 		} else {
@@ -25,8 +28,10 @@ export const fetchOrder = () => {
 
 export const addOrder = (items, amount) => {
 	const date = new Date();
-	return async dispatch => {
-		const res = await RestClient.post('/orders/u1.json', {
+	return async (dispatch, state) => {
+		const userId = state().auth.userId;
+		const token = state().auth.token;
+		await RestClient.post(`/orders/${userId}.json?auth=${token}`, {
 			items,
 			amount,
 			date,

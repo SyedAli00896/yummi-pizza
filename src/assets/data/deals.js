@@ -1,7 +1,6 @@
 export const deals = [
 	{
 		id: 11,
-		ownerId: null,
 		price: 16,
 		title: 'Buy 1 Get 3',
 		description: '1 Large Pizza, 1 Small Pizza, 6 Pcs Garlic Bread, 1 Large Drink',
@@ -9,7 +8,6 @@ export const deals = [
 	},
 	{
 		id: 12,
-		ownerId: null,
 		price: 9,
 		title: 'Cricket Combo',
 		description: '2 Regular Pizza, 6 Pcs Garlic Bread, 1 Large Drink',
@@ -17,7 +15,6 @@ export const deals = [
 	},
 	{
 		id: 13,
-		ownerId: null,
 		price: 12,
 		title: 'Large Pizza Deal',
 		description: 'One Large Pizza For Rs.1200 only',
@@ -25,7 +22,6 @@ export const deals = [
 	},
 	{
 		id: 14,
-		ownerId: null,
 		price: 39,
 		title: 'WOW Triples - Large',
 		description: '3 Large Pizzas',
@@ -33,7 +29,6 @@ export const deals = [
 	},
 	{
 		id: 15,
-		ownerId: null,
 		price: 19,
 		title: 'WOW Triples Small',
 		description: '3 Small Pizzas',

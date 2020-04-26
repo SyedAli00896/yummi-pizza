@@ -101,7 +101,7 @@ class Cart extends Component {
 											</button>
 										</td>
 										<td>
-											<Link to='./orders'>
+											<Link to='./checkout'>
 												<button type='button' class='btn btn-success'>
 													Checkout <span class='glyphicon glyphicon-play'></span>
 												</button>

@@ -9,6 +9,7 @@ class SignUpLoginPage extends Component {
 			email: '',
 			password: '',
 			error: '',
+			loading: false,
 		};
 
 		this.handlePassChange = this.handlePassChange.bind(this);
@@ -48,46 +49,71 @@ class SignUpLoginPage extends Component {
 	}
 
 	render() {
-		// NOTE: I use data-attributes for easier E2E testing
-		// but you don't need to target those (any css-selector will work)
 		const { email, password } = this.state;
 		return (
-			<div className='Login'>
+			<div className='Login container'>
 				<form onSubmit={this.handleSubmit}>
-					<label>User Name</label>
-					<input
-						type='email'
-						data-test='email'
-						value={email}
-						onChange={this.handleUserChange}
-					/>
-
-					<label>Password</label>
-					<input
-						type='password'
-						data-test='password'
-						value={password}
-						onChange={this.handlePassChange}
-					/>
-
-					<input
-						type='submit'
-						value='Log In'
-						data-test='submit'
-						onClick={() => {
-							try {
-								this.props.login(email, password);
-							} catch (err) {
-								console.log('error', err);
-							}
-						}}
-					/>
-					<input
-						type='submit'
-						value='Sign Up'
-						data-test='submit'
-						onClick={() => this.props.signup(email, password)}
-					/>
+					<div style={{ marginBottom: 20 }}>
+						<div class='col-md-6 mb-3' style={{ marginBottom: 20 }}>
+							<label for='firstName'>Email</label>
+							<input
+								class='form-control'
+								type='email'
+								data-test='email'
+								value={email}
+								onChange={this.handleUserChange}
+							/>
+						</div>
+						<div class='col-md-6 mb-3'>
+							<label for='lastName'>Password</label>
+							<input
+								class='form-control'
+								type='password'
+								data-test='password'
+								value={password}
+								onChange={this.handlePassChange}
+							/>
+						</div>
+					</div>
+					{this.state.loading ? (
+						<div class='d-flex justify-content-center'>
+							<div class='spinner-border' role='status'>
+								<span class='sr-only'>Loading...</span>
+							</div>
+						</div>
+					) : (
+						<div>
+							<div>
+								<button
+									class='btn btn-primary btn-lg btn-block'
+									type='submit'
+									data-test='submit'
+									onClick={() => {
+										this.setState({ loading: true });
+										this.props.login(email, password, this.props.history);
+										this.setState({ loading: false });
+									}}
+								>
+									Log In
+								</button>
+							</div>
+							<br />
+							<div>
+								<button
+									class='btn btn-primary btn-lg btn-block'
+									type='submit'
+									data-test='submit'
+									onClick={() => {
+										this.setState({ loading: true });
+										this.props.signup(email, password);
+										this.setState({ loading: false });
+									}}
+								>
+									Sign Up
+								</button>
+							</div>
+						</div>
+					)}
 					{this.state.error && (
 						<h3 data-test='error' onClick={this.dismissError}>
 							<button onClick={this.dismissError}>✖</button>
