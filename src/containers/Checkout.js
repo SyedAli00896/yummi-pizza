@@ -109,23 +109,11 @@ class Checkout extends Component {
 							<div class='row'>
 								<div class='col-md-6 mb-3'>
 									<label for='firstName'>First name</label>
-									<input
-										type='text'
-										class='form-control'
-										id='firstName'
-										placeholder=''
-										value=''
-									/>
+									<input type='text' class='form-control' id='firstName' placeholder='' />
 								</div>
 								<div class='col-md-6 mb-3'>
 									<label for='lastName'>Last name</label>
-									<input
-										type='text'
-										class='form-control'
-										id='lastName'
-										placeholder=''
-										value=''
-									/>
+									<input type='text' class='form-control' id='lastName' placeholder='' />
 								</div>
 							</div>
 
